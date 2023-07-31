@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -44,7 +46,7 @@
             <div id="confirmPw">
                 <h1>비밀번호 재설정</h1>
             </div>
-            <form action="changePw.html">
+            <form action="/member/changePw.jsp">
                 <div id="inputInfo">
                     <div id="userId">
                         <input type="text" id="user-id" placeholder="아이디"><img src="../resources/images/icons/login.png" alt="로그인">

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -15,7 +18,7 @@
         <!-- 헤더 -->
         <header>
             <div id="logo">
-                <a href="../index_UserLogin.html"><p>CANDY TOON</p></a>
+                <a href="/index.jsp"><p>CANDY TOON</p></a>
             </div>
             <div id="searchArea">
                 <div class="search">
@@ -28,32 +31,43 @@
             <nav>
                 <div id="mainMenu">
                     <ul>
-                        <li><a href="../ranking/total.html">웹툰랭킹</a></li>
-                        <li><a href="../ranking/new.html">신작</a></li>
-                        <li><a href="../ranking/compleated.html">완결</a></li>
+                        <li><a href="../ranking/total.jsp">웹툰랭킹</a></li>
+                        <li><a href="../ranking/new.jsp">신작</a></li>
+                        <li><a href="../ranking/compleated.jsp">완결</a></li>
                         <li><a href="#">요일</a></li>
                         <li><a href="#">장르</a></li>
                     </ul>
                 </div>
-                <div  id="customerCenter">
-                    <ul>
-                        <li><a href="../index.html">로그아웃</a></li>
-                        <li><a href="#">마이페이지</a></li>
-                        <li><a href="./notice.html">고객센터</a></li>
-                    </ul>
-                </div>
+                 <c:if test="${sessionScope.memberId ne null }">
+	                <div  id="customerCenter">
+	                    <ul>
+	                        <li><a href="/member/logout.do">로그아웃</a></li>
+	                        <li><a href="/member/myPage.do?memberId=${memberId }">마이페이지</a></li>
+	                        <li><a href="/notice.jsp">고객센터</a></li>
+	                    </ul>
+	                </div>
+                </c:if>
+                <c:if test="${sessionScope.memberId eq null }">
+	                <div  id="customerCenter">
+	                    <ul>
+	                        <li><a href="/member/login.jsp">로그인</a></li>
+	                        <li><a href="/member/register.jsp">회원가입</a></li>
+	                        <li><a href="/customerCenter/notice.jsp">고객센터</a></li>
+	                    </ul>
+	                </div>
+                </c:if>
             </nav>
         </header>
         <!-- 메인 -->
         <main>
             <div id="center">
-                <div id = "centerMenu">
-                    <ul>
-                        <li><a href="./notice.html">공지사항</a></li>
-                        <li><a href="./FAQ.html">FAQ</a></li>
-                        <li><a href="./ask.html">1:1문의</a></li>
-                    </ul>
-                </div>
+	                <div id = "centerMenu">
+	                    <ul>
+	                        <li><a href="./notice.jsp">공지사항</a></li>
+	                        <li><a href="./FAQ.jsp">FAQ</a></li>
+	                        <li><a href="./ask.jsp">1:1문의</a></li>
+	                    </ul>
+	                </div>
                 <div id="centerSearch">
                     <input type="search" placeholder="궁금한 점을 검색해 보세요.">
                     <img src="../resources/images/icons/centerSearch.png" alt="검색">
@@ -84,7 +98,7 @@
                 </table>
             </div>
             <div>    
-                <button id="askBtn"><a href="./askForm.html">문의등록</a></button>
+                <button id="askBtn"><a href="./askForm.jsp">문의등록</a></button>
             </div>
             <div id="pages">
                 <ul>

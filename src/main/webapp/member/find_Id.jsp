@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -29,7 +31,7 @@
             })
         </script>
         <div id="find">
-            <form action="find_IdResult.html">
+            <form action="/member/find_IdResult.jsp">
                 <div id="findId">
                     <h1>아이디 찾기</h1>
                 </div>

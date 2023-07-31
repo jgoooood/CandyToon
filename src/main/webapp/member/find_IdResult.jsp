@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -20,8 +22,8 @@
                 <input type="text" placeholder="candy123">
             </div>
             <div id="findBtn">
-                <button><a href="./login.html">로그인</a></button>
-                <button><a href="./confirmPw.html">비밀번호 변경</a></button>
+                <button><a href="/member/login.jsp">로그인</a></button>
+                <button><a href="/member/confirmPw.jsp">비밀번호 변경</a></button>
             </div>
         </div>
     </body>

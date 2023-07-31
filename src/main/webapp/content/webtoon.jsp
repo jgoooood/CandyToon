@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -15,7 +17,7 @@
         <!-- 헤더 -->
         <header>
             <div id="logo">
-                <a href="./index.html"><p>CANDY TOON</p></a>
+                <a href="./index.jsp"><p>CANDY TOON</p></a>
             </div>
             <div id="searchArea">
                 <div class="search">
@@ -28,18 +30,18 @@
             <nav>
                 <div id="mainMenu">
                     <ul>
-                        <li><a href="/ranking/total.html">웹툰랭킹</a></li>
-                        <li><a href="/ranking/new.html">신작</a></li>
-                        <li><a href="/ranking/compleated.html">완결</a></li>
+                        <li><a href="/ranking/total.jsp">웹툰랭킹</a></li>
+                        <li><a href="/ranking/new.jsp">신작</a></li>
+                        <li><a href="/ranking/compleated.jsp">완결</a></li>
                         <li><a href="#">요일</a></li>
                         <li><a href="#">장르</a></li>
                     </ul>
                 </div>
                 <div  id="customerCenter">
                     <ul>
-                        <li><a href="/member/login.html">로그인</a></li>
-                        <li><a href="/member/register.html">회원가입</a></li>
-                        <li><a href="/customerCenter/notice.html">고객센터</a></li>
+                        <li><a href="/member/login.jsp">로그인</a></li>
+                        <li><a href="/member/register.jsp">회원가입</a></li>
+                        <li><a href="/customerCenter/notice.jsp">고객센터</a></li>
                     </ul>
                 </div>
             </nav>

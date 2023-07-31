@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -15,7 +18,7 @@
         <!-- 헤더 -->
         <header>
             <div id="logo">
-                <a href="../index_UserLogin.html"><p>CANDY TOON</p></a>
+                <a href="/index.jsp"><p>CANDY TOON</p></a>
             </div>
             <div id="searchArea">
                 <div class="search">
@@ -28,18 +31,18 @@
             <nav>
                 <div id="mainMenu">
                     <ul>
-                        <li><a href="../ranking/total.html">웹툰랭킹</a></li>
-                        <li><a href="../ranking/new.html">신작</a></li>
-                        <li><a href="../ranking/compleated.html">완결</a></li>
+                        <li><a href="../ranking/total.jsp">웹툰랭킹</a></li>
+                        <li><a href="../ranking/new.jsp">신작</a></li>
+                        <li><a href="../ranking/compleated.jsp">완결</a></li>
                         <li><a href="#">요일</a></li>
                         <li><a href="#">장르</a></li>
                     </ul>
                 </div>
                 <div  id="customerCenter">
                     <ul>
-                        <li><a href="../index.html">로그아웃</a></li>
-                        <li><a href="./myPage.html">마이페이지</a></li>
-                        <li><a href="../customerCenter/notice.html">고객센터</a></li>
+                        <li><a href="/member/logout.do">로그아웃</a></li>
+                        <li><a href="/member/myPage.jsp">마이페이지</a></li>
+                        <li><a href="/customerCenter/notice.jsp">고객센터</a></li>
                     </ul>
                 </div>
             </nav>
@@ -78,8 +81,9 @@
                 <div id="topArea">
                     <div id="userAccount">
                         <div><img src="../resources/images/icons/account.png" alt="계정"></div>
-                        <div><p>candy123<br>
-                            candy@google.com</p>
+                        <div>
+                       		<p>candy</p>
+                            <p>candy@member.com</p>
                         </div>
                     </div>
                     <div id="userCandy">

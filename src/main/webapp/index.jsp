@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -15,7 +18,7 @@
         <!-- 헤더 -->
         <header>
             <div id="logo">
-                <a href="/index.html"><p>CANDY TOON</p></a>
+                <a href="/index.jsp"><p>CANDY TOON</p></a>
             </div>
             <div id="searchArea">
                 <div class="search">
@@ -28,20 +31,31 @@
             <nav>
                 <div id="mainMenu">
                     <ul>
-                        <li><a href="/ranking/total.html">웹툰랭킹</a></li>
-                        <li><a href="/ranking/new.html">신작</a></li>
-                        <li><a href="/ranking/compleated.html">완결</a></li>
+                        <li><a href="/ranking/total.jsp">웹툰랭킹</a></li>
+                        <li><a href="/ranking/new.jsp">신작</a></li>
+                        <li><a href="/ranking/compleated.jsp">완결</a></li>
                         <li><a href="#">요일</a></li>
                         <li><a href="#">장르</a></li>
                     </ul>
                 </div>
-                <div  id="customerCenter">
-                    <ul>
-                        <li><a href="/member/login.html">로그인</a></li>
-                        <li><a href="/member/register.html">회원가입</a></li>
-                        <li><a href="/customerCenter/notice.html">고객센터</a></li>
-                    </ul>
-                </div>
+                <c:if test="${sessionScope.memberId ne null }">
+	                <div  id="customerCenter">
+	                    <ul>
+	                        <li><a href="/member/logout.do">로그아웃</a></li>
+	                        <li><a href="/member/myPage.do?memberId=${sessionScope.memberId }">마이페이지</a></li>
+	                        <li><a href="/customerCenter/notice.jsp">고객센터</a></li>
+	                    </ul>
+	                </div>
+                </c:if>
+                <c:if test="${memberId eq null }">
+	                <div  id="customerCenter">
+	                    <ul>
+	                        <li><a href="/member/login.jsp">로그인</a></li>
+	                        <li><a href="/member/register.jsp">회원가입</a></li>
+	                        <li><a href="/customerCenter/notice.jsp">고객센터</a></li>
+	                    </ul>
+	                </div>
+                </c:if>
             </nav>
         </header>
 
@@ -49,10 +63,10 @@
             <!-- 이벤트 배너 -->
             <div id="event">
                 <div id="event-left" class="eventClass">
-                    <img src="resources/images/event/event1.png" alt="배너1">
+                    <img src="/resources/images/event/event1.png" alt="배너1">
                 </div>
                 <div id="event-right" class="eventClass">
-                    <img src="resources/images/event/event2.png" alt="배너2">
+                    <img src="/resources/images/event/event2.png" alt="배너2">
                     
                 </div>
             </div>
@@ -63,17 +77,17 @@
                 <section>
                     <div id="total-top5-layer1">
                         <div class="top5-left"><h3>전체 웹툰 TOP5</h3></div>
-                        <div class="top5-right"><h3><a href="./ranking/total.html">더보기</a></h3></div>
+                        <div class="top5-right"><h3><a href="./ranking/total.jsp">더보기</a></h3></div>
                     </div>
                     <div id="total-top5-layer2">
                         <div id="total-top1" class="top5-layer2">
                             <div class="top5-Cover">
-                                <a href="/webtoon.html">
+                                <a href="/webtoon.jsp">
                                 <img src="/resources/images/cover/total-top5/totalTop1.png" alt="상수리"></a>
                             </div>
                             <div class="top5-info">
                                 <div class="top5-info-rank"><p>1</p></div>
-                                <div class="top5-info-title"><a href="/webtoon.html">상수리나무아래</a></div>
+                                <div class="top5-info-title"><a href="/webtoon.jsp">상수리나무아래</a></div>
                                 <div class="top5-info-writer"><a href="#">서말,나무 / P</a></div>
                             </div>
                         </div>
@@ -124,7 +138,7 @@
                 <section>
                     <div id="new-top5-layer1">
                         <div class="top5-left"><h3>신작 웹툰 TOP5</h3></div>
-                        <div class="top5-right"><h3><a href="./ranking/new.html">더보기</a></h3></div>
+                        <div class="top5-right"><h3><a href="./ranking/new.jsp">더보기</a></h3></div>
                     </div>
                     <div id="new-top5-layer2">
                         <div id="new-top1" class="top5-layer2">
@@ -185,7 +199,7 @@
                 <section>
                     <div id="compleated-top5-layer1">
                         <div class="top5-left"><h3>완결 웹툰 TOP5</h3></div>
-                        <div class="top5-right"><h3><a href="/ranking/compleated.html">더보기</a></h3></div>
+                        <div class="top5-right"><h3><a href="/ranking/compleated.jsp">더보기</a></h3></div>
                     </div>
                     <div id="compleated-top5-layer2">
                         <div id="compleated-top1" class="top5-layer2">

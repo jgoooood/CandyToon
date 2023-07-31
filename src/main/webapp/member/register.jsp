@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -16,11 +18,11 @@
             document.addEventListener("DOMContentLoaded", () => {
                 document.querySelector("form").addEventListener("submit", (event)=>{
                     // 입력값가져오기
-                    const userId = document.querySelector("#userId").value;
-                    const userPw = document.querySelector("#userPw").value;
+                    const memberId = document.querySelector("#memberId").value;
+                    const memberPw = document.querySelector("#memberPw").value;
                     const pwCheck = document.querySelector("#repeatPw").value;
                     const email = document.querySelector("#email").value;
-                    const userName = document.querySelector("#userName").value;
+                    const memberName = document.querySelector("#memberName").value;
                     
                     // 정규표현식
                     const idRegExp = /^[a-z0-9]{5,10}$/g;
@@ -29,30 +31,24 @@
                     const nameRegExp = /^[가-힣]{2,4}$/g;
 
 
-                    if(!idRegExp.test(userId)) {
+                    if(!idRegExp.test(memberId)) {
                         alert("아이디는 영문, 숫자 조합 5~10자 입력해주세요.")
                         event.preventDefault();
-                    } else if(!pwRegExp.test(userPw)) {
+                    } else if(!pwRegExp.test(memberPw)) {
                         alert("비밀번호는 영문, 숫자 조합 6~20자 입력해주세요.")
                         event.preventDefault();
-                    } else if(pwCheck!==userPw) {
+                    } else if(pwCheck!==memberPw) {
                         alert("비밀번호가 일치하지 않습니다.")
                         event.preventDefault();
                     } else if(!emailRegExp.test(email)) {
                         alert("올바른 이메일형식이 아닙니다.")
                         event.preventDefault();
-                    } else if(!nameRegExp.test(userName)) {
+                    } else if(!nameRegExp.test(memberName)) {
                         alert("올바른 이름을 입력해주세요.")
                         event.preventDefault();
-                    } else {
-                        compleated();
-                    }
-
+                    } 
                 })
 
-                function compleated() {
-                    alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.")
-                }
             })
         </script>
         <div id="join">
@@ -65,12 +61,12 @@
                     <ul>
                         <li>필수입력사항</li>
                         <li>
-                            <label for="userId">아이디</label>
-                            <input type="text" id="userId" name="user-Id" placeholder="영문, 숫자 조합 5~10자 입력">
+                            <label for="memberId">아이디</label>
+                            <input type="text" id="memberId" name="memberId" placeholder="영문, 숫자 조합 5~10자 입력">
                         </li>
                         <li>
-                            <label for="userPw">비밀번호</label>
-                            <input type="password" id="userPw" name="user-Pw" placeholder="영문, 숫자 조합 6~20자 입력">
+                            <label for="memberPw">비밀번호</label>
+                            <input type="password" id="memberPw" name="memberPw" placeholder="영문, 숫자 조합 6~20자 입력">
                         </li>
                         <li>
                             <label for="repeatPw">비밀번호</label>
@@ -78,11 +74,11 @@
                         </li>
                         <li>
                             <label for="email">이메일주소</label>
-                            <input type="email" id="email" name="user-Email" placeholder="이메일 형식으로 입력">
+                            <input type="email" id="email" name="memberEmail" placeholder="이메일 형식으로 입력">
                         </li>
                         <li>
-                            <label for="userName">이름</label>
-                            <input type="text" id="userName" name="user-Name" placeholder="실명을 입력해주세요.">
+                            <label for="memberName">이름</label>
+                            <input type="text" id="memberName" name="memberName" placeholder="실명을 입력해주세요.">
                         </li>
                     </ul>
                 </div>

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -15,8 +17,8 @@
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 document.querySelector("form").addEventListener("submit", (event)=>{
-                    const loginId = document.querySelector("#userId").value;
-                    const loginPw = document.querySelector("#userPw").value;
+                    const loginId = document.querySelector("#memberId").value;
+                    const loginPw = document.querySelector("#memberPw").value;
 
                     const idRegExp = /^[a-z0-9]{5,10}$/g;
                     const pwRegExp = /^[a-z0-9]{6,20}$/g;
@@ -33,30 +35,30 @@
         </script>
         <div id="login">
             <div ID="loginLogo">
-                <a href="../index.html"><p>CANDY TOON</p></a>
+                <a href="/index.jsp"><p>CANDY TOON</p></a>
             </div>
-            <div id="loginInput">
-                <form action="../index_UserLogin.html">
+            <form action="/member/login.do" method="post">
+	            <div id="loginInput">
                     <div id="loginId">
-                        <input type="text" id="userId" placeholder="아이디" autofocus>
+                        <input type="text" id="memberId" name="memberId" placeholder="아이디" autofocus>
                         <img src="../resources/images/icons/login.png" alt="로그인">
                     </div>
                     <div id="loginPw">
-                        <input type="password" id="userPw" placeholder="비밀번호">
+                        <input type="password" id="memberPw" name="memberPw" placeholder="비밀번호">
                         <img src="../resources/images/icons/pw.png" alt="비밀번호">
                     </div>
-                </div>
+            	</div>
                 <div id="loginBtn">
-                    <button>로그인</button>
+                    <button type="submit">로그인</button>
                 </div>
                 <div id="find">
                     <ul>
-                        <li><a href="./find_Id.html">아이디찾기</a></li>
-                        <li><a href="./confirmPw.html">비밀번호변경</a></li>
-                        <li><a href="./register.html">회원가입</a></li>
+                        <li><a href="./find_Id.jsp">아이디찾기</a></li>
+                        <li><a href="./confirmPw.jsp">비밀번호변경</a></li>
+                        <li><a href="./register.jsp">회원가입</a></li>
                     </ul>
                 </div>
-            </form>
+           	</form>
         </div>
     </body>
 </html>
