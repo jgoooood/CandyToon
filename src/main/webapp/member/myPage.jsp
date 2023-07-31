@@ -82,8 +82,8 @@
                     <div id="userAccount">
                         <div><img src="../resources/images/icons/account.png" alt="계정"></div>
                         <div>
-                       		<p>candy</p>
-                            <p>candy@member.com</p>
+                       		<p name="memberId">${member.memberId }<br>
+                            ${member.memberEmail }</p>
                         </div>
                     </div>
                     <div id="userCandy">

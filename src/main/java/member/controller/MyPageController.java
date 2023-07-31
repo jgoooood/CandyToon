@@ -32,9 +32,9 @@ public class MyPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String memberId = (String)session.getAttribute("loginId");
+		
 		MemberService service = new MemberService();
+		String memberId = request.getParameter("memberId");
 		Member member = service.selectOneById(memberId);
 		request.setAttribute("member", member);
 		RequestDispatcher view  = request.getRequestDispatcher("/member/myPage.jsp");
