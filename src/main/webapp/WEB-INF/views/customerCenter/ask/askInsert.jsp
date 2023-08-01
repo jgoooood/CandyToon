@@ -69,10 +69,10 @@
 		                        <th id="askType">문의유형</th>
 		                        <td>
 		                            <select id="selectType" name="askCategory" required>
-		                                <option value="payment">결제/환불</option>
-		                                <option value="useSite">사이트이용</option>
-		                                <option value="event">이벤트</option>
-		                                <option value="ect">기타</option>
+		                                <option value="결제/환불">결제/환불</option>
+		                                <option value="사이트이용">사이트이용</option>
+		                                <option value="이벤트">이벤트</option>
+		                                <option value="기타">기타</option>
 		                            </select>
 		                        </td>
 		                    </tr>

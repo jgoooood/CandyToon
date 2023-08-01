@@ -37,7 +37,7 @@ public class MyPageController extends HttpServlet {
 		String memberId = request.getParameter("memberId");
 		Member member = service.selectOneById(memberId);
 		request.setAttribute("member", member);
-		RequestDispatcher view  = request.getRequestDispatcher("/WEB-INF/member/myPage.jsp");
+		RequestDispatcher view  = request.getRequestDispatcher("/WEB-INF/views/member/myPage.jsp");
 		view.forward(request, response);
 	}
 

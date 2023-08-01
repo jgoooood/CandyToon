@@ -9,6 +9,20 @@ public class Ask {
 	private String askWriter; 
 	private Date askDate;
 	
+	
+	
+	public Ask() {
+		super();
+	}
+
+	public Ask(String askCategory, String askSubject, String askContent, String askWriter) {
+		super();
+		this.askCategory = askCategory;
+		this.askSubject = askSubject;
+		this.askContent = askContent;
+		this.askWriter = askWriter;
+	}
+	
 	public String getAskCategory() {
 		return askCategory;
 	}

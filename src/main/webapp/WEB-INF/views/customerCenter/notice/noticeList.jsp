@@ -65,7 +65,7 @@
 	                    <ul>
 	                        <li><a href="/customerCenter/notice.do">공지사항</a></li>
 	                        <li><a href="/fnq/list.do">FAQ</a></li>
-	                        <li><a href="/customerCenter/ask.do">1:1문의</a></li>
+	                        <li><a href="/ask/list.do">1:1문의</a></li>
 	                    </ul>
 	                </div>
 	                <div id="centerSearch">
