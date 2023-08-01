@@ -13,16 +13,16 @@ import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class ConfirmPwController
  */
-@WebServlet("/member/login.do")
-public class LoginController extends HttpServlet {
+@WebServlet("/member/confirmPw.do")
+public class ConfirmPwController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public ConfirmPwController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,7 +31,7 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/member/confirmPw.jsp").forward(request, response);
 	}
 
 	/**
@@ -39,22 +39,25 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String memberId = request.getParameter("memberId");
-		String memberPw = request.getParameter("memberPw");
-		Member member = new Member(memberId, memberPw);
+		String memberEmail = request.getParameter("memberEmail");
+		Member member = new Member();
+		member.setMemberId(memberId);
+		member.setMemberEmail(memberEmail);
 		
 		MemberService service = new MemberService();
-		Member mOne = service.loginCheck(member);
+		Member mOne = service.confirmPw(member);
 		if(mOne != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("memberId", mOne.getMemberId());
 			session.setAttribute("memberPw", mOne.getMemberPw());
 			
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			request.setAttribute("msg", "[정보일치] 비밀번호 재설정페이지로 이동합니다");
+			request.setAttribute("url", "/member/changePw.do");
+			request.getRequestDispatcher("/WEB-INF/views/common/serviceSuccess.jsp").forward(request, response);
 		} else {
-			request.setAttribute("msg", "일치하는 정보가 없습니다.");
+			request.setAttribute("msg", "[정보불일치] 입력 정보를 확인해주세요.");
 			request.getRequestDispatcher("/WEB-INF/views/common/serviceFailed.jsp").forward(request, response);
 		}
-		
 	}
 
 }

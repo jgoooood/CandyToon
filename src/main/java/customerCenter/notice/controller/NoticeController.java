@@ -1,29 +1,23 @@
-package member.controller;
+package customerCenter.notice.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import member.model.service.MemberService;
-import member.model.vo.Member;
 
 /**
- * Servlet implementation class MyPageController
+ * Servlet implementation class NoticeController
  */
-@WebServlet("/member/myPage.do")
-public class MyPageController extends HttpServlet {
+@WebServlet("/customerCenter/notice.do")
+public class NoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageController() {
+    public NoticeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +26,7 @@ public class MyPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		MemberService service = new MemberService();
-		String memberId = request.getParameter("memberId");
-		Member member = service.selectOneById(memberId);
-		request.setAttribute("member", member);
-		RequestDispatcher view  = request.getRequestDispatcher("/WEB-INF/member/myPage.jsp");
-		view.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/customerCenter/notice/noticeList.jsp").forward(request, response);
 	}
 
 	/**

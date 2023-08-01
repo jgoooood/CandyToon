@@ -13,16 +13,16 @@ import member.model.service.MemberService;
 import member.model.vo.Member;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class FindIdController
  */
-@WebServlet("/member/login.do")
-public class LoginController extends HttpServlet {
+@WebServlet("/member/findId.do")
+public class FindIdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public FindIdController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,30 +31,34 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/member/findId.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String memberId = request.getParameter("memberId");
-		String memberPw = request.getParameter("memberPw");
-		Member member = new Member(memberId, memberPw);
+		//*한글입력값 전달할 때 인코딩해야 오류 안남*
+		request.setCharacterEncoding("UTF-8");
+		String memberName = request.getParameter("memberName");
+		String memberEmail = request.getParameter("memberEmail");
+		Member member = new Member();
+		member.setMemberName(memberName);
+		member.setMemberEmail(memberEmail);
 		
 		MemberService service = new MemberService();
-		Member mOne = service.loginCheck(member);
+		Member mOne = service.findId(member);
 		if(mOne != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("memberId", mOne.getMemberId());
-			session.setAttribute("memberPw", mOne.getMemberPw());
 			
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
-		} else {
+			request.setAttribute("msg", "일치하는 정보를 찾았습니다.");
+			request.setAttribute("url", "/member/findIdResult.do");
+			request.getRequestDispatcher("/WEB-INF/views/common/serviceSuccess.jsp").forward(request, response);
+		}else {
 			request.setAttribute("msg", "일치하는 정보가 없습니다.");
 			request.getRequestDispatcher("/WEB-INF/views/common/serviceFailed.jsp").forward(request, response);
 		}
-		
 	}
 
 }

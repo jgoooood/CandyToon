@@ -45,4 +45,25 @@ public class MemberService {
 		return member;
 	}
 
+	public Member confirmPw(Member member) {
+		Connection conn = jdbcTemplate.createConnection();
+		Member mOne = mDao.confirmPw(conn, member);
+		jdbcTemplate.close(conn);
+		return mOne;
+	}
+
+	public int changePw(Member member) {
+		Connection conn = jdbcTemplate.createConnection();
+		int result = mDao.changePw(conn, member);
+		jdbcTemplate.close(conn);
+		return result;
+	}
+
+	public Member findId(Member member) {
+		Connection conn = jdbcTemplate.createConnection();
+		Member mOne = mDao.findId(conn, member);
+		jdbcTemplate.close(conn);
+		return mOne;
+	}
+
 }

@@ -25,9 +25,7 @@
                     } else if(newPw!==repeatPw) {
                         alert("비밀번호가 일치하지 않습니다.")
                         event.preventDefault();
-                    } else {
-                        alert("비밀번호가 변경되었습니다. 로그인페이지로 이동합니다.")
-                    }
+                    } 
                 })
             })
 
@@ -36,18 +34,18 @@
             <div id="changePw">
                 <h1>비밀번호 재설정</h1>
             </div>
-            <form action="/member/login.jsp">
+            <form action="/member/changePw.do" method="post">
                 <div id="inputPw">
                     <div id="newPw">
-                        <input type="password" id="new-pw" placeholder="새 비밀번호를 입력해주세요">
+                        <input type="password" id="new-pw" name="newPW" placeholder="새 비밀번호를 입력해주세요">
                     </div>
                     <div id="repeatPw">
-                        <input type="password" id="new-pwRe" placeholder="재입력해주세요.">
+                        <input type="password" id="new-pwRe" name="rePw" placeholder="재입력해주세요.">
                     </div>
                 </div>
     
                 <div id="changeBtn">
-                    <button>변경하기</button>
+                    <button type="submit">변경하기</button>
                 </div>
             </form>
         </div>

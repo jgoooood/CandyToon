@@ -14,7 +14,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class RegisterController
  */
-@WebServlet("/member/Register.do")
+@WebServlet("/member/register.do")
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +30,7 @@ public class RegisterController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.getRequestDispatcher("/WEB-INF/views/member/register.jsp").forward(request, response);
 	}
 
 	/**
@@ -52,9 +52,9 @@ public class RegisterController extends HttpServlet {
 		if(result > 0) {
 			request.setAttribute("msg", "회원가입이 완료되었습니다.");
 			request.setAttribute("url", "/index.jsp");
-			request.getRequestDispatcher("/member/serviceSuccess.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/common/serviceSuccess.jsp").forward(request, response);
 		} else {
-			request.getRequestDispatcher("/member/serviceFailed.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/common/member/serviceFailed.jsp").forward(request, response);
 		}
 	}
 

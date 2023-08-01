@@ -19,11 +19,11 @@
                 <p>입력하신 정보와 일치하는 아이디를 찾았습니다.</p>
             </div>
             <div id="find_IdResult">
-                <input type="text" placeholder="candy123">
+                <input type="text"  value="${memberId}">
             </div>
             <div id="findBtn">
-                <button><a href="/member/login.jsp">로그인</a></button>
-                <button><a href="/member/confirmPw.jsp">비밀번호 변경</a></button>
+                <button><a href="/member/login.do">로그인</a></button>
+                <button><a href="/member/confirmPw.do">비밀번호 변경</a></button>
             </div>
         </div>
     </body>

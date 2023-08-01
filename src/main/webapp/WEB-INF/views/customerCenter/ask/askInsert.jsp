@@ -43,16 +43,16 @@
 	                    <ul>
 	                        <li><a href="/member/logout.do">로그아웃</a></li>
 	                        <li><a href="/member/myPage.do?memberId=${memberId }">마이페이지</a></li>
-	                        <li><a href="/notice.jsp">고객센터</a></li>
+	                        <li><a href="/customerCenter/notice.do">고객센터</a></li>
 	                    </ul>
 	                </div>
                 </c:if>
                 <c:if test="${sessionScope.memberId eq null }">
 	                <div  id="customerCenter">
 	                    <ul>
-	                        <li><a href="/member/login.jsp">로그인</a></li>
-	                        <li><a href="/member/register.jsp">회원가입</a></li>
-	                        <li><a href="/customerCenter/notice.jsp">고객센터</a></li>
+	                        <li><a href="/member/login.do">로그인</a></li>
+	                        <li><a href="/member/register.do">회원가입</a></li>
+	                        <li><a href="/customerCenter/notice.do">고객센터</a></li>
 	                    </ul>
 	                </div>
                 </c:if>
@@ -60,35 +60,37 @@
         </header>
         <!-- 메인 -->
         <main>
-	        <c:if test="${sessionScope.memberId ne null }">
-	            <h1>이용문의 등록</h1>
-	            <div id="userAsk">
-	                <table>
-	                    <tr>
-	                        <th id="askType">문의유형</th>
-	                        <td>
-	                            <select id="selectType" required>
-	                                <option value="payment">결제/환불</option>
-	                                <option value="useSite">사이트이용</option>
-	                                <option value="event">이벤트</option>
-	                                <option value="ect">기타</option>
-	                            </select>
-	                        </td>
-	                    </tr>
-	                    <tr id="askTitle">
-	                        <th>제목</th>
-	                        <td><input type="text" required placeholder="제목을 입력해주세요."></td>
-	                    </tr>
-	                    <tr id="askContent">
-	                        <th>내용</th>
-	                        <td><textarea placeholder="문의하실 내용을 입력해주세요." required></textarea></td>
-	                    </tr>
-	                </table>
-	            </div>
-	            <div>
-	                <button id="askBtn">등록하기</button>
-	            </div>
-	        </c:if>
+            <form action="/ask/list.do" method="post">
+		        <c:if test="${sessionScope.memberId ne null }">
+		            <h1>이용문의 등록</h1>
+		            <div id="userAsk">
+		                <table>
+		                    <tr>
+		                        <th id="askType">문의유형</th>
+		                        <td>
+		                            <select id="selectType" name="askCategory" required>
+		                                <option value="payment">결제/환불</option>
+		                                <option value="useSite">사이트이용</option>
+		                                <option value="event">이벤트</option>
+		                                <option value="ect">기타</option>
+		                            </select>
+		                        </td>
+		                    </tr>
+		                    <tr id="askTitle">
+		                        <th>제목</th>
+		                        <td><input type="text" name="askSubject" required placeholder="제목을 입력해주세요."></td>
+		                    </tr>
+		                    <tr id="askContent">
+		                        <th>내용</th>
+		                        <td><textarea name="askContent" placeholder="문의하실 내용을 입력해주세요." required></textarea></td>
+		                    </tr>
+		                </table>
+		            </div>
+		            <div>
+		                <button id="askBtn" type="submit">등록하기</button>
+		            </div>
+		        </c:if>
+	        </form>
         </main>
         <!-- 푸터 -->
         <footer>
@@ -99,12 +101,12 @@
                 <li>주소 : 서울특별시 중구 캔디로 123 캔디빌딩 1층</li>
             </ul>    
         </footer>
-
+		<!--  
         <script>
             document.querySelector("#askBtn").addEventListener("click", function(){
                 alert("이용문의 등록이 완료되었습니다.");
                 location.replace("./ask.jsp");
             })
-        </script>
+        </script>-->
     </body>
 </html>

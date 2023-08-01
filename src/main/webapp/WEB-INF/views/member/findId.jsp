@@ -14,16 +14,16 @@
         <script>
             document.addEventListener("DOMContentLoaded", ()=>{
                 document.querySelector("form").addEventListener("submit", function() {
-                    const userName = document.querySelector("#userName").value;
-                    const userEmail = document.querySelector("#userEmail").value;
+                    const memberName = document.querySelector("#memberName").value;
+                    const memberEmail = document.querySelector("#memberEmail").value;
 
                     const nameRegExp = /^[가-힣]{2,4}$/g;
                     const emailRegExp = /^[a-zA-Z0-9]{4,20}@[a-z]+\.[a-z]{3}/g;
 
-                    if(!nameRegExp.test(userName)) {
+                    if(!nameRegExp.test(memberName)) {
                         alert("올바른 이름 형식이 아닙니다.")
                         event.preventDefault();
-                    } else if (!emailRegExp.test(userEmail)) {
+                    } else if (!emailRegExp.test(memberEmail)) {
                         alert("올바른 이메일 형식이 아닙니다.")
                         event.preventDefault();
                     } 
@@ -31,20 +31,20 @@
             })
         </script>
         <div id="find">
-            <form action="/member/find_IdResult.jsp">
+            <form action="/member/findId.do" method="post">
                 <div id="findId">
                     <h1>아이디 찾기</h1>
                 </div>
                 <div id="userInput">
                     <div id="name">
-                        <input type="text" id="userName" placeholder="이름"><img src="../resources/images/icons/login.png" alt="로그인">
+                        <input type="text" id="memberName" name="memberName" placeholder="이름"><img src="../resources/images/icons/login.png" alt="로그인">
                     </div>
                     <div id="email">
-                        <input type="email" id="userEmail" placeholder="가입시 등록한 이메일"><img src="../resources/images/icons/email.png" alt="이메일">
+                        <input type="email" id="memberEmail" name="memberEmail" placeholder="가입시 등록한 이메일"><img src="../resources/images/icons/email.png" alt="이메일">
                     </div>
                 </div>
                 <div id="findBtn">
-                    <button>찾기</button>
+                    <button type="submit">찾기</button>
                 </div>
             </form>
         </div>

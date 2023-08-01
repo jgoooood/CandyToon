@@ -32,7 +32,7 @@
                     } 
                 })
             })
-        </script>
+         </script>
         <div id="login">
             <div ID="loginLogo">
                 <a href="/index.jsp"><p>CANDY TOON</p></a>
@@ -53,9 +53,9 @@
                 </div>
                 <div id="find">
                     <ul>
-                        <li><a href="./find_Id.jsp">아이디찾기</a></li>
-                        <li><a href="./confirmPw.jsp">비밀번호변경</a></li>
-                        <li><a href="./register.jsp">회원가입</a></li>
+                        <li><a href="/member/findId.do">아이디찾기</a></li>
+                        <li><a href="/member/confirmPw.do">비밀번호변경</a></li>
+                        <li><a href="/member/register.do">회원가입</a></li>
                     </ul>
                 </div>
            	</form>

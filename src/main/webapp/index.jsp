@@ -43,16 +43,16 @@
 	                    <ul>
 	                        <li><a href="/member/logout.do">로그아웃</a></li>
 	                        <li><a href="/member/myPage.do?memberId=${sessionScope.memberId }">마이페이지</a></li>
-	                        <li><a href="/customerCenter/notice.jsp">고객센터</a></li>
+	                        <li><a href="/customerCenter/notice.do">고객센터</a></li>
 	                    </ul>
 	                </div>
                 </c:if>
                 <c:if test="${memberId eq null }">
 	                <div  id="customerCenter">
 	                    <ul>
-	                        <li><a href="/member/login.jsp">로그인</a></li>
-	                        <li><a href="/member/register.jsp">회원가입</a></li>
-	                        <li><a href="/customerCenter/notice.jsp">고객센터</a></li>
+	                        <li><a href="/member/login.do">로그인</a></li>
+	                        <li><a href="/member/register.do">회원가입</a></li>
+	                        <li><a href="/customerCenter/notice.do">고객센터</a></li>
 	                    </ul>
 	                </div>
                 </c:if>

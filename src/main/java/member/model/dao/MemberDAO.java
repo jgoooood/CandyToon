@@ -59,16 +59,6 @@ public class MemberDAO {
 		return mOne;
 	}
 
-	private Member rsetToMember(ResultSet rset) throws SQLException {
-		Member member = new Member();
-		member.setMemberId(rset.getString("MEMBER_ID"));
-		member.setMemberPw(rset.getString("MEMBER_PW"));
-		member.setMemberEmail(rset.getString("MEMBER_EMAIL"));
-		member.setMemberName(rset.getString("MEMBER_NAME"));
-		member.setRegiDate(rset.getDate("REGI_DATE"));
-		return member;
-	}
-
 	public Member selectOneById(Connection conn, String memberId) {
 		PreparedStatement pstmt = null;
 		String query = "SELECT * FROM MEMBER_TBL WHERE MEMBER_ID = ?";
@@ -93,6 +83,91 @@ public class MemberDAO {
 		}
 		
 		return mOne;
+	}
+
+	public Member confirmPw(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM MEMBER_TBL WHERE MEMBER_ID = ? AND MEMBER_EMAIL = ?";
+		Member mOne = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getMemberId());
+			pstmt.setString(2, member.getMemberEmail());
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				mOne = rsetToMember(rset);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rset.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return mOne;
+	}
+
+	public int changePw(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE MEMBER_TBL SET MEMBER_PW = ? WHERE MEMBER_ID = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getMemberPw());
+			pstmt.setString(2, member.getMemberId());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public Member findId(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM MEMBER_TBL WHERE MEMBER_NAME = ? AND MEMBER_EMAIL = ?";
+		Member mOne = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getMemberName());
+			pstmt.setString(2, member.getMemberEmail());
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				mOne = rsetToMember(rset);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rset.close();
+				pstmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return mOne;
+	}
+
+	private Member rsetToMember(ResultSet rset) throws SQLException {
+		Member member = new Member();
+		member.setMemberId(rset.getString("MEMBER_ID"));
+		member.setMemberPw(rset.getString("MEMBER_PW"));
+		member.setMemberEmail(rset.getString("MEMBER_EMAIL"));
+		member.setMemberName(rset.getString("MEMBER_NAME"));
+		member.setRegiDate(rset.getDate("REGI_DATE"));
+		return member;
 	}
 
 }
