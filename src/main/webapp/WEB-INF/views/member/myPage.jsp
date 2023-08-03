@@ -3,17 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CANDYTOON</title>
-        <link rel="stylesheet" href="../resources/CSS/reset.css">
-        <link rel="stylesheet" href="../resources/CSS/member/myPage.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bungee&display=swap" rel="stylesheet">
-    </head>
+    <!-- head -->
+	<jsp:include page="/WEB-INF/views/include/head.jsp"></jsp:include>
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="../resources/CSS/member/myPage.css">
+    
     <body>
         <!-- 헤더 -->
         <header>
@@ -63,8 +57,8 @@
                     <div><img src="../resources/images/icons/credit-card.png" alt="결제"></div>
                     <h1>결제</h1>
                     <ul>
-                        <li>결제내역</li>
-                        <li>캔디충전</li>
+                        <li>결제내역</li><br>
+                        <li>캔디충전</li><br>
                         <li>충전내역</li>
                     </ul>
                 </div>
@@ -72,7 +66,7 @@
                     <div><img src="../resources/images/icons/user.png" alt="개인"></div>
                     <h1>개인</h1>
                     <ul>
-                        <li>댓글관리</li>
+                        <li>댓글관리</li><br>
                         <li>회원정보</li>
                     </ul>
                 </div>
@@ -104,13 +98,6 @@
             </section>
         </main>
         <!-- 푸터 -->
-        <footer>
-            <ul>
-                <li>상호 : (주)캔디툰</li>
-                <li>사업자등록번호 : 123-45-67890</li>
-                <li>대표전화 : 1234-5678</li>
-                <li>주소 : 서울특별시 중구 캔디로 123 캔디빌딩 1층</li>
-            </ul>    
-        </footer>
+        <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
     </body>
 </html>

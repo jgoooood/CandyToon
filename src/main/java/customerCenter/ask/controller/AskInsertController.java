@@ -38,14 +38,12 @@ public class AskInsertController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		
 		AskService service = new AskService();
 		request.setCharacterEncoding("UTF-8");
 		String askCategory = request.getParameter("askCategory");
 		String askSubject = request.getParameter("askSubject");
 		String askContent = request.getParameter("askContent");
-		String askWriter = (String)session.getAttribute("memberId");
+		String askWriter = request.getParameter("memberId");
 		Ask ask = new Ask(askCategory, askSubject, askContent, askWriter);
 		int result = service.insertAsk(ask);
 		if(result > 0) {

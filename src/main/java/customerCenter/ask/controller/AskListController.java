@@ -1,11 +1,17 @@
 package customerCenter.ask.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import customerCenter.ask.model.service.AskService;
+import customerCenter.ask.model.vo.Ask;
+import customerCenter.ask.model.vo.PageData;
 
 /**
  * Servlet implementation class AskController
@@ -26,6 +32,17 @@ public class AskListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//DB에서 목록가져오기
+		//SELECT * FROM ASK_TBL;
+		AskService service = new AskService();
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		// 20. service.selectAskList메소드의 반환값을 받기 위해 List타입에서 PageData 타입으로 변경
+		PageData pData = service.selectAskList(currentPage);
+		// 21. List<Ask> aList는 PageData에서 getter메소드로 값을 불러옴
+		List<Ask> aList = pData.getaList();
+		// 22. JSP에서 값을 쓸 수 있도록 세팅->${aList}, ${pageNavi}통해 값을 넣을 수 있음
+		request.setAttribute("aList", aList);
+		request.setAttribute("pageNavi", pData.getPageNavi());
 		request.getRequestDispatcher("/WEB-INF/views/customerCenter/ask/askList.jsp").forward(request, response);
 	}
 

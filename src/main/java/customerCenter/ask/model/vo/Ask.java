@@ -3,6 +3,7 @@ package customerCenter.ask.model.vo;
 import java.sql.Date;
 
 public class Ask {
+	private int askNo;
 	private String askCategory; 
 	private String askSubject; 
 	private String askContent; 
@@ -54,11 +55,22 @@ public class Ask {
 		this.askDate = askDate;
 	}
 	
+	
+	public int getAskNo() {
+		return askNo;
+	}
+
+	public void setAskNo(int askNo) {
+		this.askNo = askNo;
+	}
+
 	@Override
 	public String toString() {
-		return "1:1문의 [문의유형=" + askCategory + ", 제목=" + askSubject + ", 내용=" + askContent
-				+ ", 작성자=" + askWriter + ", 작성일=" + askDate + "]";
+		return "1:1문의내역 [글번호=" + askNo + ", 문의유형=" + askCategory + ", 제목=" + askSubject + ", 내용="
+				+ askContent + ", 작성자=" + askWriter + ", 날짜=" + askDate + "]";
 	}
+
+	
 	
 	
 	
