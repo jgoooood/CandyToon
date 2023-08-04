@@ -71,7 +71,7 @@
 		                    <tr>
 		                        <td>${ask.askNo }</td>
 		                        <td>${ask.askCategory }</td>
-		                        <td><a href="#">${ask.askSubject }</a></td>
+		                        <td><a href="/ask/detail.do?askNo=${ask.askNo }">${ask.askSubject }</a></td>
 		                        <td>${ask.askDate }</td>
 		                    </tr>
 	                	</c:forEach>

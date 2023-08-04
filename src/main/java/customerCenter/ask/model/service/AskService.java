@@ -39,4 +39,11 @@ public class AskService {
 		return pData;
 	}
 
+	public Ask selectOneByNo(int askNo) {
+		Connection conn = jdbcTemplate.createConnection();
+		Ask ask = aDao.selectOneByNo(conn, askNo);
+		jdbcTemplate.close(conn);
+		return ask;
+	}
+
 }

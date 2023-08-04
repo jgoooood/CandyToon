@@ -32,10 +32,12 @@ public class AskListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//삼항연산자를 이용해서 넘어주는 값이 없으면 현재페이지를 1로 세팅하는 코드
+		String page = request.getParameter("currentPage") != null ? request.getParameter("currentPage") : "1";
 		//DB에서 목록가져오기
 		//SELECT * FROM ASK_TBL;
 		AskService service = new AskService();
-		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		int currentPage = Integer.parseInt(page);
 		// 20. service.selectAskList메소드의 반환값을 받기 위해 List타입에서 PageData 타입으로 변경
 		PageData pData = service.selectAskList(currentPage);
 		// 21. List<Ask> aList는 PageData에서 getter메소드로 값을 불러옴

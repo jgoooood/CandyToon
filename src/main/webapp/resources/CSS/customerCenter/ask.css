@@ -114,6 +114,10 @@ main {
     font-size: medium;
 }
 
+.askBtn:hover {
+        background-color: rgb(252, 117, 7);
+        color: white;
+    }
 
 #pages {
     width: 900px;
@@ -131,21 +135,28 @@ main {
         align-items: center;
         height: 50px;
         }
-
-    #pages li {
+	#pages ul li {
+        display: flex;
+        flex-direction: row;
+	}
+	
+    #pages li a{
         margin: 10px;
         padding: 5px 10px 5px 10px;
-        display: flex;
         color: gray;
-        font-size: 1.3em;
         font-weight: 500;
         background-color: #ecebeb;
         border-radius: 5px;
     }
 
-/*     #pages li:first-child { */
-/*         background-color: rgb(252, 117, 7); */
-/*         color: white; */
-/*     } */
+     #pages li a:focus {
+        background-color: rgb(252, 117, 7);
+        color: white;
+    }
+    #pages li a:hover {
+        background-color: rgb(252, 117, 7);
+        color: white;
+    }
+    
 
 

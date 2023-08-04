@@ -101,7 +101,7 @@ public class AskDao {
 	//필요변수 (1)전체게시물개수 (2)한페이지당 보여줄 게시물개수 (3)네비게이터개수
 	public String generatePageNavi(int currentPage) {
 		// 6. 생성할 네비게이터 수를 먼저 계산하기위해 전체게시물 수, 보여줄게시물 수 변수선언
-		int totalCount = 22; //전체게시물수 : 현재 DB상 개수 22->추후 동적으로 계산할 예정
+		int totalCount = 37; //전체게시물수 : 현재 DB상 개수 22->추후 동적으로 계산할 예정
 		int recordCountPerPage = 5; // 보여줄 게시물 수->직접지정
 		int naviTotalCount = 0; //네비게이터 수 구하는 계산식 전에 변수 먼저 선언함 
 		// 7. 네비게이터 수 계산식= 전체게시물수 / 보여줄게시물 수
@@ -133,15 +133,15 @@ public class AskDao {
 		StringBuilder result = new StringBuilder();
 		// 13. 이전 버튼이 필요하면(true) -> 이전버튼 추가
 		if(needPrev) {
-			result.append("<a href='/ask/list.do?currentPage="+(startNavi-1)+"'>[이전]</a> ");
+			result.append("<a href='/ask/list.do?currentPage="+(startNavi-1)+"'><</a> ");
 		}
 		// 14. for문으로 페이지 네비게이터 번호 생성
-		for(int i = 1; i < naviTotalCount; i++) {
+		for(int i = startNavi; i < naviTotalCount; i++) {
 			result.append("<a href='/ask/list.do?currentPage="+i+"'>"+i+"</a>");
 		}
 		// 15. 다음 버튼이 필요하면 -> 다음버튼 추가
 		if(needNext) { 
-			result.append("<a href='/ask/list.do?currentPage="+(endNavi+1)+"'>[다음]</a>");
+			result.append("<a href='/ask/list.do?currentPage="+(endNavi+1)+"'>></a>");
 		}
 		// 16. generatePageNavi메소드 반환타입을 String 변경해줌
 		return result.toString(); 
@@ -156,6 +156,24 @@ public class AskDao {
 		ask.setAskContent(rset.getString("ASK_CONTENT"));
 		ask.setAskWriter(rset.getString("ASK_WRITER"));
 		ask.setAskDate(rset.getDate("ASK_DATE"));
+		return ask;
+	}
+
+	public Ask selectOneByNo(Connection conn, int askNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "SELECT * FROM ASK_TBL WHERE ASK_NO = ?";
+		Ask ask = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, askNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				ask = rsetToAsk(rset);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return ask;
 	}
 
